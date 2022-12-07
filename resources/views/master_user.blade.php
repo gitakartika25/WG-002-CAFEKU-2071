@@ -34,11 +34,7 @@
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
-    <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
-    <script type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-jn_QXOuWTdYCj_Jj"></script>
-    <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
+   
 </head>
 
 <body>
@@ -61,34 +57,15 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="/home" class="js-logo-clone"><strong class="text-primary">Gita</strong>Kartika</a>
+              <a href="/home" class="js-logo-clone"><strong class="text-primary">Cafe</strong>Ku</a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="@if(Request::is('beranda')) active @endif"><a href="{{ url('beranda') }}">Home</a></li>
-                {{-- <li class="@if(Request::is('rekomendasi')) active @endif"><a href="{{ url('rekomendasi') }}">Rekomendasi Jamu</a></li> --}}
-                {{-- <li class="has-children">
-                  <a href="#">Products</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Supplements</a></li>
-                    <li class="has-children">
-                      <a href="#">Vitamins</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Supplements</a></li>
-                        <li><a href="#">Vitamins</a></li>
-                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                        <li><a href="#">Tea &amp; Coffee</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                    <li><a href="#">Tea &amp; Coffee</a></li>
-                    
-                  </ul>
-                </li> --}}
-                {{-- <li class="@if(Request::is('about')) active @endif"><a href="/about">About</a></li>
-                <!-- <li class="@if(Request::is('contact')) active @endif"><a href="/contact">Contact</a></li> --> --}}
+                <li class="@if(Request::is('home')) active @endif"><a href="{{ url('home') }}">Home</a></li>
+                <li class="@if(Request::is('daftarmenu')) active @endif"><a href="{{ url('daftarmenu') }}">Menu</a></li>
+  
               </ul>
             </nav>
           </div>
@@ -102,24 +79,13 @@
                       <a class="btn btn-primary btn-hover text-light" style="border-radius: 20px;" href="{{ route('register') }}">Register</a>
               @endif
             @else
-{{--            
-            <a href="{{ url('/cart') }}" class="icons-btn d-inline-block bag"><span class="icon-shopping-bag"></span><span class="number"><div id="cartt"></div></span></a>
-            <a href="/history" class="icons-btn d-inline-block book"><span class="icon-book"></span></a> --}}
 
             <a class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }}
               </a>
 
-              {{-- <a href="#" class="icons-btn d-inline-block user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <span class=""> <img src="{{ asset('storage/' .Auth::user()->foto) }}" width="30px" height="30px" style="border:1px solid black; border-radius: 50%" alt="profile"/></span></a>{{ Auth::user()->name }}
-              </a> --}}
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  {{-- <a class="dropdown-item" href="{{ route ('profile.edit', Auth::user()->id) }}">
-                    <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Profile
-                   
-                  </a> --}}
-
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout
                   </a>
@@ -154,8 +120,8 @@
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
 
             <div class="block-7">
-              <h3 class="footer-heading mb-4">About <strong class="text-primary">Gita Kartika</strong></h3>
-              <p>Expert bussines partner to rental tools or device about laboratorium all categories.</p>
+              <h3 class="footer-heading mb-4">About <strong class="text-primary">CafeKu</strong></h3>
+              <p>Serve all delicious menu</p>
             </div>
 
           </div>
@@ -163,9 +129,8 @@
             <h3 class="footer-heading mb-4">Navigation</h3>
             <ul class="list-unstyled">
               <li><a href="/home">Home</a></li>
-              {{-- <li><a href="/about">About</a></li> --}}
               <li><a href="/menu">Menu</a></li>
-              {{-- <li><a href="{{url('cart')}}">Cart</a></li> --}}
+           
             </ul>
           </div>
 
@@ -173,9 +138,9 @@
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
-                <li class="address">Karisma Academy, Malang, Jawa Timur, Indonesia</li>
+                <li class="address">Karisma Cafe, Malang, Jawa Timur, Indonesia</li>
                 <li class="phone"><a href="">085234567895</a></li>
-                <li class="email">karismaacademy@domain.com</li>
+                <li class="email">karismacafe@domain.com</li>
               </ul>
             </div>
 
