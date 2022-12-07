@@ -18,12 +18,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
-Route::resource('user', UserController::class);
-Route::resource('kategori', KategoriController::class);
-Route::resource('menu', MenuController::class);
+
+Route::middleware(['auth', 'owner'])->group(function () { // hanya user dengan role owner yang bisa mengakses kelola user, selain itu tidak bisa
+    Route::resource('user', UserController::class);
+    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('deleteuser/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+ 
+});
+
+Route::middleware(['auth',])->group(function () {
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('menu', MenuController::class);
+    Route::get('kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+    Route::get('menu/edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::get('deletemenu/{id}', [MenuController::class, 'destroy'])->name('menu.destroy');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,14 +1,14 @@
 @extends('master_admin')
 
-@section('title', 'kategori')
+@section('title', 'Data User')
 
 @section('content')
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Data Kategori</h4>
-        <a class="btn btn-primary" href="{{ route('kategori.create') }}">Tambah Kategori</a>
+        <h4 class="card-title">Data User</h4>
+        <a class="btn btn-primary" href="{{ route('user.create') }}">Tambah User</a>
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -17,21 +17,27 @@
                   No
                 </th>
                 <th>
-                  Nama Kategori
+                  Nama 
                 </th>
                 <th>
-                  Action
+                  Email
+                </th>
+                <th>
+                  Role
                 </th>
               </tr>
             </thead>
             <tbody>
-                @foreach($kategori as $p)
+                @foreach($user as $u)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $p->nama }}</td>
+                <td>{{ $u->name }}</td>
+                <td>{{ $u->email }}</td>
+                <td>{{ $u->role->nama }}</td>
+              
                 <td>
-                    <a href="/kategori/edit/{{ $p->id }}" class="btn btn-primary">Edit</a>
-                    <a href="/deletekategori/{{ $p->id }}" class="btn btn-danger">Delete</a>
+                    <a href="/user/edit/{{ $u->id }}" class="btn btn-primary">Edit</a>
+                    <a href="/deleteuser/{{ $u->id }}" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
               @endforeach
@@ -42,5 +48,4 @@
       </div>
     </div>
   </div>
-
 @endsection

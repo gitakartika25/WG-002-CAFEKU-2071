@@ -295,9 +295,9 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                           <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Data Menu</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('menu') }}">Data Menu</a></li>
                             {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Data Produk</a></li> --}}
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('') }}">Data Kategori</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('kategori') }}">Data Kategori</a></li>
                             {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
                           </ul>
                         </div>
@@ -350,7 +350,7 @@
               </ul>
             </div>
           </li> --}}
-          {{-- @if(Auth::user()->role_id == 1) --}}
+          @if(Auth::user()->role_id == 1)
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
                             aria-controls="auth">
@@ -360,7 +360,7 @@
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('') }}"> Data User
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('user') }}"> Data User
                                     </a></li>
                                 {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('login') }}"> Login </a>
                                 </li>
@@ -369,7 +369,7 @@
                             </ul>
                         </div>
                     </li>
-        {{-- @endif --}}
+        @endif
                     {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
               <i class="icon-ban menu-icon"></i>
