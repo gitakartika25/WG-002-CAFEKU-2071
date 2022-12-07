@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -13,7 +15,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menu = Menu::all(); //mengambil data dari tabel menu
+
+        return view('admin.index_menu', compact('menu'));
     }
 
     /**
@@ -23,7 +27,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $kategori = Kategori::all(); //mengambil data dari tabel kategori untuk ditampilkan pada dropdown
+
+        return view('admin.create_menu', compact('kategori'));
     }
 
     /**
@@ -34,7 +40,19 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('foto')->store('menu/foto');
+        $validate = $request->validate([
+            'nama' => 'required|string',
+            'foto' => 'required',
+            'kategori_id' => 'required',
+            'harga' => 'required|int',
+            'keterangan' => 'required|string',
+        ]);
+        $validate['foto'] = $file;
+
+        Menu::create($validate);
+
+        return redirect('menu');
     }
 
     /**
@@ -56,7 +74,11 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        $kategori = Kategori::all(); //mengambil data dari tabel kategori untuk ditampilkan pada dropdown
+
+        return view('admin.edit_menu', compact('menu', 'kategori'));
+
     }
 
     /**
@@ -68,7 +90,20 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::find($id);
+        $m = $request->all();
+
+        try{
+            $file = $request->file('foto')->store('menu/foto');
+            $m['foto'] = $file; // mengupdate field foto dengan data dari $file
+            $menu->update($m);
+        }
+        catch(\Throwable $th) {
+            $m['foto'] = $menu->foto; // mengupdate field foto dengan data yang sudah ada pada database
+            $menu->update($m);
+        }
+
+        return redirect('menu');
     }
 
     /**
@@ -79,6 +114,9 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+
+        return redirect('menu');
     }
 }

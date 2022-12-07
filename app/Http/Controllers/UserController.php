@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+
+        return view('admin.index_user' , compact('user'));
     }
 
     /**
@@ -23,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $role = Role::all(); //mengambil data dari tabel role untuk ditampilkan pada dropdown
+
+        return view('admin.create_user', compact('role'));
     }
 
     /**
@@ -34,7 +41,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role_id' => ['required'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $validate['password'] = Hash::make($request->password); // menyimpan password dengan format hash
+
+        User::create($validate);
+
+        return redirect('user');
     }
 
     /**
@@ -56,7 +73,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $role = Role::all(); //mengambil data dari tabel role untuk ditampilkan pada dropdown
+
+        return view('admin.edit_menu', compact('user', 'role'));
     }
 
     /**
@@ -68,7 +88,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $u = $request->all();
+        $u['password'] = Hash::make($request->password); // mengupdate password dengan format hash
+
+        $user->update($u);
+
+        return redirect('user');
+
     }
 
     /**
@@ -79,6 +106,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('user');
+
     }
 }
