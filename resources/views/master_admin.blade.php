@@ -75,11 +75,11 @@
                           
                         </div>
                     </li>
-                    <li class="nav-item nav-settings d-none d-lg-flex">
+                    {{-- <li class="nav-item nav-settings d-none d-lg-flex">
                         <a class="nav-link" href="#">
                             <i class="icon-ellipsis"></i>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                     data-toggle="offcanvas">
@@ -91,7 +91,7 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            <div class="theme-setting-wrapper">
+            {{-- <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
                 <div id="theme-settings" class="settings-panel">
                     <i class="settings-close ti-close"></i>
@@ -112,7 +112,7 @@
                         <div class="tiles default"></div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div id="right-sidebar" class="settings-panel">
                 <i class="settings-close ti-close"></i>
                 <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -1255,11 +1255,11 @@
     <script src="{{ asset('template/js/settings.js') }}"></script>
     <script src="{{ asset('template/js/todolist.js') }}"></script>
     <!-- endinject -->
-    <!-- Custom js for this page-->
+    {{-- <!-- Custom js for this page-->
     <script src="{{ asset('template/js/file-upload.js') }}"></script>
     <script src="{{ asset('template/js/typeahead.js') }}"></script>
     <script src="{{ asset('template/js/select2.js') }}"></script>
-  <!-- End custom js for this page-->
+  <!-- End custom js for this page--> --}}
     @yield('js')
     <!-- End custom js for this page-->
 </body>

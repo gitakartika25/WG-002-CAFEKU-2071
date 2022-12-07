@@ -56,7 +56,7 @@
 
                 <td>
                     <a href="menu/edit/{{ $m->id }}" class="btn btn-primary">Edit</a>
-                    <a href="deletemenu/{{ $m->id }}" class="btn btn-danger">Delete</a>
+                    <a href="deletemenu/{{ $m->id }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                  
                 </td>
               </tr>

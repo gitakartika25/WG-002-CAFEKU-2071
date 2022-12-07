@@ -64,7 +64,7 @@
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="@if(Request::is('home')) active @endif"><a href="{{ url('home') }}">Home</a></li>
-                <li class="@if(Request::is('daftarmenu')) active @endif"><a href="{{ url('daftarmenu') }}">Menu</a></li>
+                {{-- <li class="@if(Request::is('daftarmenu')) active @endif"><a href="{{ url('daftarmenu') }}">Menu</a></li> --}}
   
               </ul>
             </nav>
@@ -129,7 +129,7 @@
             <h3 class="footer-heading mb-4">Navigation</h3>
             <ul class="list-unstyled">
               <li><a href="/home">Home</a></li>
-              <li><a href="/menu">Menu</a></li>
+              {{-- <li><a href="/menu">Menu</a></li> --}}
            
             </ul>
           </div>

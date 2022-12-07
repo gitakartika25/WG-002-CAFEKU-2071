@@ -5,11 +5,11 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Order</div>
+            <div class="card-header">Form Pesanan</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{ route('dashboard.store') }}" method="POST">
+                        <form action="{{ route('dashboard.store', []) }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputName1">Nama</label>
@@ -19,16 +19,11 @@
                             <div class="form-group">
                                 <label for="exampleInputName1">Pesanan</label>
                                 <div></div>
-                                <select class="form-select" name="pesanan[]" multiple aria-label="multiple select example">
+                                <select class="form-select" name="order[]" multiple aria-label="multiple select example">
                                     <option value="50000">Cappucino</option>
                                     <option value="50000">Americano</option>
                                     <option value="50000">V60</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Total Pesanan</label>
-                                <input type="text" class="form-control" id="" name="total"
-                                    >
                             </div>
                             <div class="form-group">
                                 <label for="">Status</label>
@@ -41,10 +36,10 @@
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </form>
                     </div>
-                    {{-- <div class="col-md-6">
+                    <div class="col-md-6">
                         @isset($data)
                             {{-- <hr> --}}
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col">
                                     Nama :
                                 </div>
@@ -58,7 +53,7 @@
                                     Jumlah Pesanan :
                                 </div>
                                 <div class="col">
-                                    {{ $data['jumlah'] }}
+                                    {{ $data['jumlahorder'] }}
                                 </div>
                             </div>
                             <hr>
@@ -67,7 +62,7 @@
                                     Total Pesanan :
                                 </div>
                                 <div class="col">
-                                    {{ $data['total'] }}
+                                    {{ $data['totalpesanan'] }}
                                 </div>
                             </div>
                             <hr>
@@ -93,17 +88,16 @@
                                     Total Pembayaran :
                                 </div>
                                 <div class="col">
-                                    {{ $data['pembayaran'] }}
+                                    {{ $data['totalpembayaran'] }}
                                 </div>
                             </div>
                             <hr>
                         @endisset
-
-                    </div> --}} 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+</div>
+</div>
 @endsection

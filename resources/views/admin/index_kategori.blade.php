@@ -31,7 +31,7 @@
                 <td>{{ $p->nama }}</td>
                 <td>
                     <a href="/kategori/edit/{{ $p->id }}" class="btn btn-primary">Edit</a>
-                    <a href="/deletekategori/{{ $p->id }}" class="btn btn-danger">Delete</a>
+                    <a href="/deletekategori/{{ $p->id }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
               @endforeach

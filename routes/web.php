@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -18,10 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('beranda');
 });
 
 Auth::routes();
+
+Route::get('beranda', [BerandaController::class, 'index']);
 
 Route::middleware(['auth', 'owner'])->group(function () { // hanya user dengan role owner yang bisa mengakses kelola user, selain itu tidak bisa
     Route::resource('user', UserController::class);
@@ -30,7 +34,9 @@ Route::middleware(['auth', 'owner'])->group(function () { // hanya user dengan r
  
 });
 
-Route::middleware(['auth',])->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::post('dashboard', [DashboardController::class, 'store'])->name('dashboard.store');
     Route::resource('kategori', KategoriController::class);
     Route::resource('menu', MenuController::class);
     Route::get('kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
