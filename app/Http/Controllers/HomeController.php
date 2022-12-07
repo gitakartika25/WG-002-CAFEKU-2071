@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,10 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
-            return view ('admin.dashboard');
+            return redirect ('dashboard');
         }else {
-
-            return view('home');
+           return redirect('beranda');
         }
     }
 }

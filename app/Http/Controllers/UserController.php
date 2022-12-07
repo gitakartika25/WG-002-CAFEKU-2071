@@ -45,7 +45,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'role_id' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
         $validate['password'] = Hash::make($request->password); // menyimpan password dengan format hash
 
@@ -76,7 +76,7 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::all(); //mengambil data dari tabel role untuk ditampilkan pada dropdown
 
-        return view('admin.edit_menu', compact('user', 'role'));
+        return view('admin.edit_user', compact('user', 'role'));
     }
 
     /**
@@ -90,9 +90,15 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $u = $request->all();
-        $u['password'] = Hash::make($request->password); // mengupdate password dengan format hash
+   
+     
+         if($request->password!=null){
+         $user->password=Hash::make($request->password);   // mengupdate password dengan format hash
 
+        }
+        
         $user->update($u);
+     
 
         return redirect('user');
 
